@@ -1,0 +1,61 @@
+{% extends view('app') %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Novo Motorista</h3>
+            </div>
+
+            <form class="form-horizontal" action="/user/motorista/store" method="post">
+                <div class="box-body">
+                    <input type="hidden" name="user_id" value="{{ auth().id }}">
+
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">Nome</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="" name="nome">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">CPF</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control"  placeholder="Somente Numeros" maxlength="11" name="cpf">
+                        </div>
+                        <label for="inputPassword3" class="col-sm-1 control-label">RG</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control"  placeholder="Somente Numeros" maxlength="10" name="rg">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">CNH</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" placeholder="" name="cnh">
+                        </div>
+                        <label for="inputPassword3" class="col-sm-1 control-label">Categoria</label>
+                        <div class="col-sm-4">
+                            <select name="categoria_cnh" class="form-control">
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="AB">AB</option>
+                                <option value="C">D</option>
+                                <option value=E">E</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    {{ include(view('location._inputs')) }}
+
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary pull-right">SALVAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+

@@ -1,0 +1,68 @@
+{% extends view('app') %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <a href="/user/motorista/create"><i class="fa fa-plus"></i></a>
+                <h3 class="box-title">Motoristas</h3>
+
+                <div class="box-tools">
+                    <form action="/user/motorista/search" method="post">
+                        <div class="input-group input-group-sm" style="width: 350px;">
+                            <input type="text" name="search" class="form-control pull-right" placeholder="Pesquise pelo CEP">
+
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <form role="form">
+                <div class="box-body">
+                    <table class="table">
+                        <thead>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>RG</th>
+                        <th>CNH</th>
+                        <th>Categoria</th>
+                        <th>Endereço</th>
+                        <th>CEP</th>
+                        <th>#</th>
+                        </thead>
+                        <tbody>
+                        {% for motorista in motoristas %}
+                            <tr>
+                                <td>{{ motorista.nome}}</td>
+                                <td>{{ motorista.cpf }}</td>
+                                <td>{{ motorista.rg }}</td>
+                                <td>{{ motorista.cnh }}</td>
+                                <td>{{ motorista.categoria_cnh }}</td>
+                                <td>{{ motorista.logadouro }}</td>
+                                <td>{{ motorista.cep }}</td>
+                                <td>
+                                    <a href="/user/motorista/edit?id={{ motorista.id }}"><i class="fa fa-edit"></i></a>
+                                    <a href="/user/motorista/delete?id={{ motorista.id }}" class="text-danger"><i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}

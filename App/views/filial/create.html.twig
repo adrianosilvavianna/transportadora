@@ -1,0 +1,26 @@
+{% extends view('app') %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Nova Filial</h3>
+            </div>
+
+            <form class="form-horizontal" action="/user/filial/store" method="post">
+                <div class="box-body">
+                    <input type="hidden" name="user_id" value="{{ auth().id }}">
+
+                    {{ include(view('location._inputs')) }}
+
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary pull-right">SALVAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+

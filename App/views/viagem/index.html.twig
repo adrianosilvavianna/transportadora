@@ -1,0 +1,72 @@
+{% extends view('app') %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <a href="/user/viagem/create"><i class="fa fa-plus"></i></a>
+                <h3 class="box-title">Motoristas</h3>
+
+                <div class="box-tools">
+                    <form action="/user/viagem/search" method="post">
+                        <div class="input-group input-group-sm" style="width: 350px;">
+                            <input type="text" name="search" class="form-control pull-right" placeholder="Pesquise pelo CEP">
+
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <form role="form">
+                <div class="box-body">
+                    <table class="table">
+                        <thead>
+                        <th>Partida</th>
+                        <th>Motorista</th>
+                        <th>Veiculo</th>
+                        <th>Filial <small>(Saída)</small></th>
+                        <th>Cliente <small>(Chegada)</small></th>
+                        <th>Status</th>
+                        <th>#</th>
+                        </thead>
+                        <tbody>
+                        {% for viagem in viagens %}
+                            <tr>
+                                <td>{{ viagem.data_partida}}</td>
+                                <td>{{ viagem.Motorista().nome }}</td>
+                                <td>{{ viagem.Veiculo().modelo }} | {{ viagem.Veiculo().marca }}</td>
+                                <td>{{ viagem.Filial().logadouro }}</td>
+                                <td>{{ viagem.Cliente().logadouro }}</td>
+                                <td>
+                                    {% if viagem.status == 0 %}
+                                        <small class="label bg-yellow">Pedente</small>
+                                    {% else %}
+                                        <small class="label bg-green">Despachado</small>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="/user/viagem/edit?id={{ viagem.id }}"><i class="fa fa-edit"></i></a>
+                                    <a href="/user/viagem/delete?id={{ viagem.id }}" class="text-danger"><i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}

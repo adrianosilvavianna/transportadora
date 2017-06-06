@@ -1,0 +1,28 @@
+{
+    "name": "codeandcode/start",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.3",
+        "codeandcode/micro-fwk": "^1.4"
+     },
+    "require-dev": {
+
+    },
+    "authors": [
+        {
+            "name": "CodeAndCode",
+            "email": "contato@codeandcode.com.br"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Cac\\": "vendor/codeandcode/micro-fwk",
+            "App\\": "App/"
+        },
+        "files":
+        [
+            "vendor/codeandcode/micro-fwk/Helpers/Helper.php"
+        ]
+    },
+    "minimum-stability": "dev"
+}

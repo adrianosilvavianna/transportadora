@@ -1,0 +1,60 @@
+{% extends view('app') %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <a href="/user/veiculo/create"><i class="fa fa-plus"></i></a>
+                <h3 class="box-title">Veiculos</h3>
+
+                <div class="box-tools">
+                    <form action="/user/veiculo/search" method="post">
+                        <div class="input-group input-group-sm" style="width: 350px;">
+                            <input type="text" name="search" class="form-control pull-right" placeholder="Pesquise pela MARCA">
+
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <form role="form">
+                <div class="box-body">
+                    <table class="table">
+                        <thead>
+                        <th>Modelo</th>
+                        <th>Marca</th>
+                        <th>Ano</th>
+                        <th>Categoria</th>
+                        <th>#</th>
+                        </thead>
+                        <tbody>
+                        {% for veiculo in veiculos %}
+                            <tr>
+                                <td>{{ veiculo.modelo }}</td>
+                                <td>{{ veiculo.marca }}</td>
+                                <td>{{ veiculo.ano }}</td>
+                                <td>{{ veiculo.categoria }}</td>
+                                <td>
+                                    <a href="/user/veiculo/edit?id={{ veiculo.id }}"><i class="fa fa-edit"></i></a>
+                                    <a href="/user/veiculo/delete?id={{ veiculo.id }}" class="text-danger"><i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}
